@@ -1,0 +1,31 @@
+﻿<Window x:Class="DailyPlanner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DailyPlanner"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DatePicker Grid.Row="0" Name="datePicker" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+
+        <ListBox Grid.Row="1" Name="noteListBox" ItemsSource="{Binding Path=Notes}" DisplayMemberPath="Title" MouseDoubleClick="noteListBox_MouseDoubleClick"/>
+
+        <StackPanel Grid.Row="1" Margin="10" VerticalAlignment="Bottom">
+            <TextBox Name="titleTextBox" Margin="0 0 0 5" Text="Название заметки"/>
+            <TextBox Name="descriptionTextBox" Margin="0 0 0 5" Text="Описание заметки"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Создать заметку" Margin="0 0 5 0" Click="CreateButton_Click"/>
+                <Button Content="Удалить заметку" Margin="0 0 5 0" Click="DeleteButton_Click"/>
+                <Button Content="Сохранить заметку" Margin="0 0 5 0" Click="SaveButton_Click"/>
+                <Button Content="Сбросить все заметки" Click="ResetNotesButton_Click"/>
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
