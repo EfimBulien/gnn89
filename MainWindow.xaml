@@ -5,27 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DailyPlanner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" SizeToContent="WidthAndHeight">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="200"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <DatePicker Grid.Row="0" Name="datePicker" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+        <DatePicker Grid.Row="0" Grid.Column="0" Name="datePicker" SelectedDateChanged="DatePicker_SelectedDateChanged" Margin="10,10,10,10" Grid.ColumnSpan="2"/>
 
-        <ListBox Grid.Row="1" Name="noteListBox" ItemsSource="{Binding Path=Notes}" DisplayMemberPath="Title" MouseDoubleClick="noteListBox_MouseDoubleClick"/>
+        <ListBox Grid.Row="1" Grid.Column="0" Name="noteListBox" ItemsSource="{Binding Path=Notes}" DisplayMemberPath="Title" MouseDoubleClick="noteListBox_MouseDoubleClick" Margin="10,10,10,10" Grid.RowSpan="6"/>
 
-        <StackPanel Grid.Row="1" Margin="10" VerticalAlignment="Bottom">
-            <TextBox Name="titleTextBox" Margin="0 0 0 5" Text="Название заметки"/>
-            <TextBox Name="descriptionTextBox" Margin="0 0 0 5" Text="Описание заметки"/>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Создать заметку" Margin="0 0 5 0" Click="CreateButton_Click"/>
-                <Button Content="Удалить заметку" Margin="0 0 5 0" Click="DeleteButton_Click"/>
-                <Button Content="Сохранить заметку" Margin="0 0 5 0" Click="SaveButton_Click"/>
-                <Button Content="Сбросить все заметки" Click="ResetNotesButton_Click"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="titleTextBox" Margin="10 0 10 5" Text="Название заметки"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="descriptionTextBox" Margin="10 0 10 5" Text="Описание заметки"/>
 
-            </StackPanel>
-        </StackPanel>
+        <Button Grid.Row="3" Grid.Column="1" Content="Создать заметку" Margin="10 0 5 0" Click="CreateButton_Click"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="Удалить заметку" Margin="10 0 5 0" Click="DeleteButton_Click"/>
+        <Button Grid.Row="5" Grid.Column="1" Content="Сохранить заметку" Margin="10 0 5 0" Click="SaveButton_Click"/>
+        <Button Grid.Row="6" Grid.Column="1" Content="Сбросить все заметки" Margin="10 0 5 0" Click="ResetNotesButton_Click"/>
     </Grid>
 </Window>
